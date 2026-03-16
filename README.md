@@ -93,6 +93,66 @@ The resulting binaries will be placed in the `src-tauri/target/release/bundle` d
   - Bollard (Docker API client)
   - Tokio (Asynchronous runtime)
 
+## 🧯 Troubleshooting
+
+### Error: `failed to run 'cargo metadata' ... No such file or directory (os error 2)`
+
+When running:
+
+```bash
+pnpm tauri dev
+```
+
+You may see:
+
+```text
+failed to run 'cargo metadata' command to get workspace directory: failed to run command cargo metadata --no-deps --format-version 1: No such file or directory (os error 2)
+```
+
+#### Cause
+
+`cargo` is not installed, or it is installed but not available in your current `PATH`.
+
+#### Solution
+
+1. Install Rust via `rustup`:
+
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+   ```
+
+2. Load Cargo in the current shell:
+
+   ```bash
+   source "$HOME/.cargo/env"
+   ```
+
+3. (Recommended) persist it for next sessions:
+
+   ```bash
+   echo 'source "$HOME/.cargo/env"' >> ~/.zshrc
+   source ~/.zshrc
+   ```
+
+4. Validate:
+
+   ```bash
+   cargo --version
+   rustc --version
+   ```
+
+5. Run again:
+
+   ```bash
+   pnpm tauri dev
+   ```
+
+If you are on Linux and the next error is `linker 'cc' not found`, install system dependencies:
+
+```bash
+sudo apt-get update && sudo apt-get install -y build-essential libwebkit2gtk-4.1-dev librsvg2-dev
+```
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
