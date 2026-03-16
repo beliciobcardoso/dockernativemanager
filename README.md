@@ -153,6 +153,10 @@ If you are on Linux and the next error is `linker 'cc' not found`, install syste
 sudo apt-get update && sudo apt-get install -y build-essential libwebkit2gtk-4.1-dev librsvg2-dev
 ```
 
+## 🤖 Agent Guide
+
+For AI agents and contributors, see the project guide in [AGENTS.md](AGENTS.md).
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
